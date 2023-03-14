@@ -16,11 +16,11 @@ for (int i = 0; i < n; i++){
 }
 
 //sorting - O(n^2)
-for (int i = 0; i < n; i++){
+for (int i = 0; i < n; i++){        // -> O(n)
     int j = i;
 
     //check to the left
-    while (j > 0 && arr[j-1] > arr[j]){
+    while (j > 0 && arr[j-1] > arr[j]){ // -> O(n)
         swap(arr[j-1], arr[j]);
         j--;
     }
