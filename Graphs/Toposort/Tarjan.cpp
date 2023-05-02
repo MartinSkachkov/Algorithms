@@ -3,6 +3,8 @@
 #include <vector>
 using namespace std;
 
+// Интуитивна аргументация на коректността на алгоритъма е, че най-малката f-стойност задължително е на сифон
+
 unsigned n, m;
 vector<string> color;
 vector<string> par;
