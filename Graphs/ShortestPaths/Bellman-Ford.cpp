@@ -44,7 +44,7 @@ void Bellman_Ford(const vector<vector<pair<int, int>>> &graph, int s) {
     }
 
     // if we update the values on the nth iteration then there is a negative cycle
-    for (size_t u = 0; u <= n; u++) {
+    for (size_t u = 1; u <= n; u++) {
         for (pair<int, int> v : graph[u]) {
             if (dist[u] != INF && dist[u] + v.second < dist[v.first]) {
                 cout << "Negative cycle!\n";

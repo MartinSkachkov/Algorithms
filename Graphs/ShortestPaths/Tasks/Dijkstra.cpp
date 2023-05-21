@@ -47,20 +47,20 @@ void Dijkstra(const vector<vector<pair<int, int>>> &graph, int s) {
     vector<bool> visited(n + 1, false);
 
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    pq.push({s, 0});
+    pq.push({0, s});
 
     while (!pq.empty()) {
         pair<int, int> u = pq.top();
         pq.pop();
-        visited[u.first] = true;
+        visited[u.second] = true;
 
-        if (dist[u.first] < u.second)
-            continue;                                                                    // if the distance in the array is better than the dist in the priority queue just continue, nothing to change
-        for (pair<int, int> v : graph[u.first]) {                                        // for each adjacent vertex v of u
-            if (visited[v.first] == false && dist[u.first] + v.second < dist[v.first]) { // if v is not visited and the dist from u to v is better than the one saved in the array for v
-                dist[v.first] = dist[u.first] + v.second;                                // update it to the shorter one
-                par[v.first] = to_string(u.first);                                       // save the parent of v to be u
-                pq.push({v.first, dist[v.first]});                                       // go with the next smallest one
+        if (dist[u.second] < u.first)
+            continue;                                                                     // if the distance in the array is better than the dist in the priority queue just continue, nothing to change
+        for (pair<int, int> v : graph[u.second]) {                                        // for each adjacent vertex v of u
+            if (visited[v.first] == false && dist[u.second] + v.second < dist[v.first]) { // if v is not visited and the dist from u to v is better than the one saved in the array for v
+                dist[v.first] = dist[u.second] + v.second;                                // update it to the shorter one
+                par[v.first] = to_string(u.second);                                       // save the parent of v to be u
+                pq.push({dist[v.first], v.first});                                        // go with the next smallest one
             }
         }
     }
